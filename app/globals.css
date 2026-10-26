@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* Dizayn tokenlar. Ranglar Excel yacheyka ranglaridan olingan (yashil C6EFCE, sariq FFEB9C, qizil FFC7CE),
+   chunki Murod shu ranglarga o'rganib qolgan: yashil = tayyor, sariq = jarayonda, qizil = yo'q. */
+:root {
+  --fon: #f6f7f9;
+  --qog: #ffffff;
+  --chiziq: #e3e6ea;
+  --matn: #1b1f24;
+  --matn2: #6b7280;
+  --asosiy: #1f5eff;
+  --yashil-fon: #c6efce;
+  --yashil: #1e6b32;
+  --sariq-fon: #ffeb9c;
+  --sariq: #7a5a00;
+  --qizil-fon: #ffc7ce;
+  --qizil: #9c1c2b;
+  --kul-fon: #f2f2f2;
+  --radius: 8px;
+  --shrift: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+html, body { background: var(--fon); color: var(--matn); font-family: var(--shrift); font-size: 14px; }
+
+.jadval { border-collapse: separate; border-spacing: 0; white-space: nowrap; }
+.jadval th, .jadval td { border-bottom: 1px solid var(--chiziq); border-right: 1px solid var(--chiziq); padding: 0; height: 34px; vertical-align: middle; }
+.jadval th { background: var(--kul-fon); font-weight: 600; font-size: 12px; color: var(--matn2); padding: 0 8px; position: sticky; top: 0; z-index: 2; text-align: left; }
+.jadval td.hisob { background: var(--kul-fon); color: var(--matn2); padding: 0 8px; font-family: var(--mono); font-size: 13px; text-align: right; }
+.jadval td.muz { position: sticky; z-index: 1; background: var(--qog); }
+.jadval th.muz { z-index: 3; }
+.jadval tr:hover td { filter: brightness(0.98); }
+
+.katak { width: 100%; height: 34px; border: 0; background: transparent; padding: 0 8px; font: inherit; color: inherit; outline: none; }
+.katak:focus { box-shadow: inset 0 0 0 2px var(--asosiy); background: var(--qog); }
+.katak.son { text-align: right; font-family: var(--mono); font-size: 13px; }
+select.katak { appearance: none; cursor: pointer; }
+
+.chip { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 26px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; user-select: none; }
+.chip.yoq { background: var(--qizil-fon); color: var(--qizil); }
+.chip.ora { background: var(--sariq-fon); color: var(--sariq); }
+.chip.ha { background: var(--yashil-fon); color: var(--yashil); }
+.chip.off { background: var(--kul-fon); color: var(--matn2); }
+
+.fon-qizil { background: var(--qizil-fon) !important; color: var(--qizil); }
+.fon-sariq { background: var(--sariq-fon) !important; color: var(--sariq); }
+.fon-yashil { background: var(--yashil-fon) !important; color: var(--yashil); }
+
+.tugma { height: 36px; padding: 0 14px; border-radius: var(--radius); font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--chiziq); background: var(--qog); }
+.tugma.asosiy { background: var(--asosiy); color: #fff; border-color: var(--asosiy); }
+.tugma.faol { background: var(--matn); color: #fff; border-color: var(--matn); }
+
+.kirish { height: 36px; padding: 0 10px; border: 1px solid var(--chiziq); border-radius: var(--radius); background: var(--qog); font: inherit; outline: none; }
+.kirish:focus { border-color: var(--asosiy); }
+
+.ai-panel { position: fixed; right: 0; top: 0; bottom: 0; width: min(420px, 100vw); background: var(--qog); border-left: 1px solid var(--chiziq); display: flex; flex-direction: column; z-index: 20; box-shadow: -8px 0 24px rgba(0,0,0,.06); }
+.xabar { padding: 10px 12px; border-radius: 12px; max-width: 92%; white-space: pre-wrap; line-height: 1.4; }
+.xabar.men { background: var(--asosiy); color: #fff; align-self: flex-end; }
+.xabar.ai { background: var(--kul-fon); align-self: flex-start; }
+
+@media (max-width: 640px) { html, body { font-size: 13px; } .jadval th, .jadval td, .katak { height: 40px; } }
