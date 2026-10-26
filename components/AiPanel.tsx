@@ -34,7 +34,7 @@ export default function AiPanel({ yop, qosh }: {
 
   return (
     <aside className="ai-panel">
-      <div className="flex items-center justify-between p-3 border-b" style={{ borderColor: "var(--chiziq)" }}>
+      <div className="flex items-center justify-between p-3" style={{ borderBottom: "1px solid var(--chiziq2)", background: "var(--sarlavha-fon)" }}>
         <b>AI yordamchi</b>
         <button className="tugma" onClick={yop}>Yopish</button>
       </div>
@@ -48,7 +48,7 @@ export default function AiPanel({ yop, qosh }: {
         {kutish && <div className="xabar ai">...</div>}
         <div ref={oxiri} />
       </div>
-      <div className="p-3 border-t flex gap-2" style={{ borderColor: "var(--chiziq)" }}>
+      <div className="p-3 flex gap-2" style={{ borderTop: "1px solid var(--chiziq2)" }}>
         <input className="kirish flex-1" value={matn} onChange={(e) => setMatn(e.target.value)} onKeyDown={(e) => e.key === "Enter" && yubor()} placeholder="Yozing..." />
         <button className="tugma asosiy" onClick={yubor} disabled={kutish}>Yubor</button>
       </div>

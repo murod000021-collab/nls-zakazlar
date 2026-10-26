@@ -1,61 +1,94 @@
 @import "tailwindcss";
 
-/* Dizayn tokenlar. Ranglar Excel yacheyka ranglaridan olingan (yashil C6EFCE, sariq FFEB9C, qizil FFC7CE),
-   chunki Murod shu ranglarga o'rganib qolgan: yashil = tayyor, sariq = jarayonda, qizil = yo'q. */
-:root {
-  --fon: #f6f7f9;
+/* Dizayn tokenlar. Excel yacheykalari kabi ko'rinish: chegarali kataklar, zich qatorlar.
+   Holat ranglari Exceldagi bilan bir xil (yashil C6EFCE, sariq FFEB9C, qizil FFC7CE),
+   chunki Murod shu ranglarga o'rganib qolgan. Tema faqat fon/matn/chegarani o'zgartiradi,
+   holat ranglari har temada o'qiladigan bo'lib qoladi. */
+:root, [data-tema="oq"] {
+  --fon: #ffffff;
   --qog: #ffffff;
-  --chiziq: #e3e6ea;
-  --matn: #1b1f24;
-  --matn2: #6b7280;
-  --asosiy: #1f5eff;
-  --yashil-fon: #c6efce;
-  --yashil: #1e6b32;
-  --sariq-fon: #ffeb9c;
-  --sariq: #7a5a00;
-  --qizil-fon: #ffc7ce;
-  --qizil: #9c1c2b;
-  --kul-fon: #f2f2f2;
-  --radius: 8px;
-  --shrift: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  --mono: ui-monospace, "SF Mono", Menlo, monospace;
+  --chiziq: #c8c8c8;
+  --chiziq2: #9a9a9a;
+  --matn: #000000;
+  --matn2: #555555;
+  --asosiy: #217346;
+  --sarlavha-fon: #f3f3f3;
+  --hisob-fon: #f2f2f2;
+  --tanlov: #e8f0fe;
+  --yashil-fon: #c6efce; --yashil: #006100;
+  --sariq-fon: #ffeb9c;  --sariq: #9c5700;
+  --qizil-fon: #ffc7ce;  --qizil: #9c0006;
+  --shrift: Calibri, "Segoe UI", Arial, sans-serif;
+}
+[data-tema="qora"] {
+  --fon: #1e1e1e; --qog: #1e1e1e; --chiziq: #3c3c3c; --chiziq2: #5a5a5a;
+  --matn: #e6e6e6; --matn2: #a0a0a0; --asosiy: #4ec9b0;
+  --sarlavha-fon: #2a2a2a; --hisob-fon: #262626; --tanlov: #2d3a4a;
+  --yashil-fon: #1f4d2b; --yashil: #9be7a8;
+  --sariq-fon: #5a4600;  --sariq: #ffe08a;
+  --qizil-fon: #5c1f26;  --qizil: #ffb3bb;
+}
+[data-tema="kok"] {
+  --fon: #eef3fa; --qog: #ffffff; --chiziq: #b9c8dd; --chiziq2: #8aa2c2;
+  --matn: #10233f; --matn2: #4a5e7e; --asosiy: #1f5eff;
+  --sarlavha-fon: #dce6f5; --hisob-fon: #edf2fa; --tanlov: #d7e4ff;
+  --yashil-fon: #c6efce; --yashil: #006100;
+  --sariq-fon: #ffeb9c;  --sariq: #9c5700;
+  --qizil-fon: #ffc7ce;  --qizil: #9c0006;
+}
+[data-tema="yashil"] {
+  --fon: #eef7f0; --qog: #ffffff; --chiziq: #b5d4bd; --chiziq2: #86b394;
+  --matn: #0f2a18; --matn2: #3f6a4e; --asosiy: #217346;
+  --sarlavha-fon: #d6ecdc; --hisob-fon: #ecf5ee; --tanlov: #d2f0da;
+  --yashil-fon: #c6efce; --yashil: #006100;
+  --sariq-fon: #ffeb9c;  --sariq: #9c5700;
+  --qizil-fon: #ffc7ce;  --qizil: #9c0006;
+}
+[data-tema="qum"] {
+  --fon: #f7f3ea; --qog: #fffdf8; --chiziq: #d9cdb5; --chiziq2: #b9a888;
+  --matn: #2b2418; --matn2: #6b5e46; --asosiy: #a3582c;
+  --sarlavha-fon: #efe6d3; --hisob-fon: #f4eee0; --tanlov: #f3e2c5;
+  --yashil-fon: #c6efce; --yashil: #006100;
+  --sariq-fon: #ffeb9c;  --sariq: #9c5700;
+  --qizil-fon: #ffc7ce;  --qizil: #9c0006;
 }
 
 html, body { background: var(--fon); color: var(--matn); font-family: var(--shrift); font-size: 14px; }
 
-.jadval { border-collapse: separate; border-spacing: 0; white-space: nowrap; }
-.jadval th, .jadval td { border-bottom: 1px solid var(--chiziq); border-right: 1px solid var(--chiziq); padding: 0; height: 34px; vertical-align: middle; }
-.jadval th { background: var(--kul-fon); font-weight: 600; font-size: 12px; color: var(--matn2); padding: 0 8px; position: sticky; top: 0; z-index: 2; text-align: left; }
-.jadval td.hisob { background: var(--kul-fon); color: var(--matn2); padding: 0 8px; font-family: var(--mono); font-size: 13px; text-align: right; }
-.jadval td.muz { position: sticky; z-index: 1; background: var(--qog); }
-.jadval th.muz { z-index: 3; }
-.jadval tr:hover td { filter: brightness(0.98); }
+/* Excel jadvali */
+.xl { border-collapse: separate; border-spacing: 0; white-space: nowrap; background: var(--qog); }
+.xl th, .xl td { border-right: 1px solid var(--chiziq); border-bottom: 1px solid var(--chiziq); padding: 0; height: 26px; vertical-align: middle; }
+.xl th { background: var(--sarlavha-fon); font-weight: 700; font-size: 12px; color: var(--matn); padding: 0 6px; position: sticky; top: 0; z-index: 2; text-align: center; border-bottom: 2px solid var(--chiziq2); }
+.xl th.guruh { background: var(--tanlov); border-bottom: 1px solid var(--chiziq2); }
+.xl td.hisob { background: var(--hisob-fon); color: var(--matn2); padding: 0 6px; text-align: right; font-variant-numeric: tabular-nums; }
+.xl td.muz, .xl th.muz { position: sticky; z-index: 1; background: var(--qog); border-right: 2px solid var(--chiziq2); }
+.xl th.muz { z-index: 3; background: var(--sarlavha-fon); }
+.xl tr:hover td { background-color: color-mix(in srgb, var(--tanlov) 35%, transparent); }
+.xl tr.yopiq td { color: var(--matn2); }
 
-.katak { width: 100%; height: 34px; border: 0; background: transparent; padding: 0 8px; font: inherit; color: inherit; outline: none; }
-.katak:focus { box-shadow: inset 0 0 0 2px var(--asosiy); background: var(--qog); }
-.katak.son { text-align: right; font-family: var(--mono); font-size: 13px; }
-select.katak { appearance: none; cursor: pointer; }
+.k { width: 100%; height: 26px; border: 0; background: transparent; padding: 0 6px; font: inherit; color: inherit; outline: none; min-width: 0; }
+.k:focus { box-shadow: inset 0 0 0 2px var(--asosiy); background: var(--qog); position: relative; z-index: 1; }
+.k.son { text-align: right; font-variant-numeric: tabular-nums; }
+.k.markaz { text-align: center; }
+select.k { appearance: none; cursor: pointer; }
+input[type="date"].k { font-size: 13px; }
 
-.chip { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 26px; padding: 0 8px; border-radius: 999px; font-size: 12px; font-weight: 600; cursor: pointer; border: 1px solid transparent; user-select: none; }
-.chip.yoq { background: var(--qizil-fon); color: var(--qizil); }
-.chip.ora { background: var(--sariq-fon); color: var(--sariq); }
-.chip.ha { background: var(--yashil-fon); color: var(--yashil); }
-.chip.off { background: var(--kul-fon); color: var(--matn2); }
+/* Holat kataklari: Exceldagi kabi butun katak rang oladi */
+.ha { background: var(--yashil-fon) !important; color: var(--yashil) !important; font-weight: 700; }
+.ora { background: var(--sariq-fon) !important; color: var(--sariq) !important; font-weight: 700; }
+.yoq { background: var(--qizil-fon) !important; color: var(--qizil) !important; font-weight: 700; }
+.off { color: var(--matn2); }
+td.bos { cursor: pointer; text-align: center; user-select: none; font-weight: 700; }
 
-.fon-qizil { background: var(--qizil-fon) !important; color: var(--qizil); }
-.fon-sariq { background: var(--sariq-fon) !important; color: var(--sariq); }
-.fon-yashil { background: var(--yashil-fon) !important; color: var(--yashil); }
-
-.tugma { height: 36px; padding: 0 14px; border-radius: var(--radius); font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--chiziq); background: var(--qog); }
+.tugma { height: 30px; padding: 0 12px; border-radius: 4px; font-weight: 600; font-size: 13px; cursor: pointer; border: 1px solid var(--chiziq2); background: var(--qog); color: var(--matn); }
 .tugma.asosiy { background: var(--asosiy); color: #fff; border-color: var(--asosiy); }
-.tugma.faol { background: var(--matn); color: #fff; border-color: var(--matn); }
-
-.kirish { height: 36px; padding: 0 10px; border: 1px solid var(--chiziq); border-radius: var(--radius); background: var(--qog); font: inherit; outline: none; }
+.tugma.faol { background: var(--matn); color: var(--qog); border-color: var(--matn); }
+.kirish { height: 30px; padding: 0 8px; border: 1px solid var(--chiziq2); border-radius: 4px; background: var(--qog); color: var(--matn); font: inherit; outline: none; }
 .kirish:focus { border-color: var(--asosiy); }
 
-.ai-panel { position: fixed; right: 0; top: 0; bottom: 0; width: min(420px, 100vw); background: var(--qog); border-left: 1px solid var(--chiziq); display: flex; flex-direction: column; z-index: 20; box-shadow: -8px 0 24px rgba(0,0,0,.06); }
-.xabar { padding: 10px 12px; border-radius: 12px; max-width: 92%; white-space: pre-wrap; line-height: 1.4; }
-.xabar.men { background: var(--asosiy); color: #fff; align-self: flex-end; }
-.xabar.ai { background: var(--kul-fon); align-self: flex-start; }
+.ai-panel { position: fixed; right: 0; top: 0; bottom: 0; width: min(420px, 100vw); background: var(--qog); border-left: 1px solid var(--chiziq2); display: flex; flex-direction: column; z-index: 20; box-shadow: -8px 0 24px rgba(0,0,0,.15); }
+.xabar { padding: 8px 10px; border-radius: 8px; max-width: 92%; white-space: pre-wrap; line-height: 1.4; border: 1px solid var(--chiziq); }
+.xabar.men { background: var(--tanlov); align-self: flex-end; }
+.xabar.ai { background: var(--hisob-fon); align-self: flex-start; }
 
-@media (max-width: 640px) { html, body { font-size: 13px; } .jadval th, .jadval td, .katak { height: 40px; } }
+@media (max-width: 640px) { .xl th, .xl td, .k { height: 34px; } }

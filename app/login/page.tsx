@@ -19,7 +19,7 @@ export default function Login() {
 
   return (
     <main className="min-h-screen flex items-center justify-center p-4">
-      <form onSubmit={kir} className="w-full max-w-sm bg-white border rounded-xl p-6 flex flex-col gap-3" style={{ borderColor: "var(--chiziq)" }}>
+      <form onSubmit={kir} className="w-full max-w-sm border rounded p-6 flex flex-col gap-3" style={{ borderColor: "var(--chiziq2)", background: "var(--qog)" }}>
         <h1 className="text-xl font-bold">NLS Zakazlar</h1>
         <input className="kirish" type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
         <input className="kirish" type="password" placeholder="Parol" value={parol} onChange={(e) => setParol(e.target.value)} required autoComplete="current-password" />
